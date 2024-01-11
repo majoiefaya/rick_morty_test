@@ -1,6 +1,6 @@
 import { Origin } from "./Origin";
 import { Location } from "./Location";
-export class Caracter {
+export class Character {
     id: number;
     name: string;
     status: string;

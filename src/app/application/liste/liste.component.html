@@ -6,8 +6,26 @@
     <title>Document</title>
 </head>
 <body>
+    <form [formGroup]="filterForm" (ngSubmit)="applyFilters()">
+        <label for="name">Name:</label>
+        <input type="text" id="name" formControlName="name" />
+    
+        <label for="status">Status:</label>
+        <input type="text" id="status" formControlName="status" />
+        
+        <label for="name">Species:</label>
+        <input type="text" id="species" formControlName="species" />
+    
+        <label for="status">Type:</label>
+        <input type="text" id="type" formControlName="type" />
+
+        <label for="status">Gender:</label>
+        <input type="text" id="gender" formControlName="gender" />
+    
+        <button type="submit">Apply Filters</button>
+      </form>
     <div class="grid-container">
-        <div *ngFor="let caracter of caracters_datas" class="item">
+        <div *ngFor="let caracter of characters_datas" class="item">
             <img [src]="caracter.image" alt="Rachel Image">
             <ul>
                 <li>Status: {{caracter.status}}</li>
