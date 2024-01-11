@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="grid-container">
+        <div *ngFor="let caracter of caracters_datas" class="item">
+            <img [src]="caracter.image" alt="Rachel Image">
+            <ul>
+                <li>Status: {{caracter.status}}</li>
+                <li>Species: {{caracter.species}}</li>
+                <li>Gender: {{caracter.gender}}</li>
+                <li>Origin: {{caracter.origin.name}}</li>
+                <li>Last Location: {{caracter.location.name}}</li>
+            </ul>
+        </div>
+      </div>
+      <div>
+        <a (click)="previousPage()">Page précédente</a>
+      
+        <a  *ngFor="let page of [].constructor(totalPages); let i = index" (click)="goToPage(i + 1)"  [class.active]="currentPage === i + 1">
+            {{ i + 1 }}
+        </a>  
+        <a (click)="nextPage()" >Page suivante</a>
+    </div>
+</body>
+</html>
