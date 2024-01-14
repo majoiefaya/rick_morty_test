@@ -8,12 +8,21 @@ body {
     width: 100%;
     margin: auto;
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Ajustez la valeur ici */
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); /* Ajustez la valeur ici */
     gap: 10px;
     background-color: #eeeeee;
     padding: 5px;
 }
 
+.infos{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: #f4f4f4;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
 .grid-container > .item {
     background-color: rgb(255, 255, 255);
     text-align: center;
@@ -102,7 +111,7 @@ body {
 .item .created-badge {
     position: absolute;
     top: 220px;
-    right: 190px;
+    right: 210px;
     width: 70px;
     height: 15px;
     background-color:whitesmoke;
@@ -181,7 +190,7 @@ body {
 
 .filter-form button {
     flex: 1 0 100%;
-    padding: 12px;
+    padding: 10px;
     background-color: #ff5500;
     color: #fff;
     margin-left: 20px;
@@ -196,8 +205,48 @@ body {
     background-color: #ff5500;
 }
 
-#itemNumber{
+#itemNumber,
+#totalPages,
+#characters_datas_count{
     color: #ff5500;
     font-size: 16px;
     text-align: left;
+    background-color:whitesmoke;
+    box-shadow: 2px 2px 1px 1px #ffffff;
+    padding: 3px;
+    border-radius: 3px;
 }
+
+/* Styles pour le préchargeur et le message d'erreur */
+.loading-indicator,
+.alert {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 999; /* Assurez-vous que cela est supérieur à l'indice z des autres éléments */
+}
+
+/* Style spécifique pour le préchargeur */
+.loading-indicator {
+    color:white;
+    background-color: #ff5500;
+    padding: 3px;
+    border-radius: 7px;
+}
+
+/* Ajoutez ce style si vous souhaitez centrer également le message de succès */
+.alert.alert-success {
+    background-color: #11ad38;
+    color:white;
+    padding: 3px;
+    border-radius: 7px;
+}
+
+.alert.alert-danger {
+    background-color: #ad1111;
+    color:white;
+    padding: 3px;
+    border-radius: 7px;
+}
+

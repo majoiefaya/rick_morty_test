@@ -14,6 +14,7 @@ export class ListeComponent implements OnInit {
   errorMessage: string = '';
   successMessage: string = '';
   characters_datas: Character[] = [];
+  characters_datas_count=0;
   charactersCopy: Character[] = [...this.characters_datas];
   next!: string;
   previous!: string;
@@ -54,21 +55,26 @@ export class ListeComponent implements OnInit {
       (response: any) => {
         console.log(response);
         if (response.results.length === 0) {
-          this.errorMessage="No Datas to display"
+          this.errorMessage = "No datas to display"
         }
         this.characters_datas = response.results;
         this.currentPage = page;
         this.totalPages = response.info.pages;
+        this.characters_datas_count=response.info.count
         this.next = response.info.next;
         this.previous = response.info.prev;
         localStorage.setItem('currentPage', this.currentPage.toString());
         this.loading = false;
       },
       (error) => {
-        this.errorMessage=error
-      },
-      () => {
-        // Optional completion logic
+        switch (error.status) {
+          case 0:
+            this.errorMessage = "Failed to load resource,internet disconnected"
+            break
+          default:
+            this.errorMessage = "Unknow error"
+        }
+        this.loading = false
       }
     );
   }
@@ -81,17 +87,22 @@ export class ListeComponent implements OnInit {
     this.appService.filterCharacters(filterParams).subscribe(
       (response) => {
         this.charactersCopy = response.results;
-        this.characters_datas=this.charactersCopy
+        this.characters_datas = this.charactersCopy
         this.totalPages = response.info.pages;
+        this.characters_datas_count=response.info.count
         this.next = response.info.next;
         this.previous = response.info.prev;
         this.loading = false;
       },
       (error) => {
-        this.errorMessage=error
-      },
-      () => {
-        // Optional completion logic
+        switch (error.status) {
+          case 0:
+            this.errorMessage = "Failed to load resource,internet disconnected"
+            break
+          default:
+            this.errorMessage = "Unknow error"
+        }
+        this.loading = false
       }
     );
   }
