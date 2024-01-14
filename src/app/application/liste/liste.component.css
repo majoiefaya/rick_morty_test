@@ -1,33 +1,203 @@
+body {
+    font-family: cursive;
+    margin: 0;
+    padding: 0;
+}
+
 .grid-container {
     width: 100%;
     margin: auto;
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Ajustez la valeur ici */
     gap: 10px;
-    background-color: #ffffff;
-    padding: 10px;
+    background-color: #eeeeee;
+    padding: 5px;
 }
 
 .grid-container > .item {
-    background-color: rgba(227, 227, 227, 0.8);
+    background-color: rgb(255, 255, 255);
     text-align: center;
-    padding: 20px;
-    border-radius: 1%;
+    padding: 5px;
+    border-radius: 3%;
+    font-family: cursive;
+    font-size: 10px;
+    overflow: hidden; /* Ajout de la propriété overflow */
+    max-width: 100%; /* Limiter la largeur des éléments */
 }
 
+
+/* Style pour la pagination */
+.pagination-container {
+    display: flex;
+    text-align: right;
+    /* justify-content: space-between; */
+    margin-top: 20px; /* Espace en haut de la pagination */
+}
+
+.pagination-link {
+    padding: 5px 10px;
+    text-decoration: none;
+    color: #333;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin: 0 3px;
+}
+
+.pagination-link.active {
+    background-color: #ff5500;
+    color: #fff;
+}
+
+/*Image de la box*/
 .item img {
-    width: 70%;
-    height: 40%;
+    width: 100%;
+    height: 50%;
     object-fit: cover;
+    border-radius: 3%;
+    background-color: #ccc; /* Couleur de fond en gris */
 }
 
-.item ul {
-    list-style-type: none;
-    padding: 0;
+.item .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%; /* Adjust the width as needed */
+    height: 10%;
+    background: rgba(0, 0, 0, 0.5); /* Adjust the alpha (last) value for transparency */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #fff;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.item .overlay p {
     margin: 0;
 }
 
-.item li {
+
+.item {
+    position: relative; /* Ajoutez cette ligne pour que la position soit relative par rapport à l'élément .item */
+}
+
+.item .circle-badge {
+    position: absolute;
+    top: 210px;
+    right: 20px;
+    width: 30px;
+    height: 30px;
+    background-color: #ff5500;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    font-weight: bold;
+    box-shadow: 2px 2px 1px 1px #ffffff;
+    font-size: 12px;
+}
+
+.item .created-badge {
+    position: absolute;
+    top: 220px;
+    right: 190px;
+    width: 70px;
+    height: 15px;
+    background-color:whitesmoke;
+    display: block;
+    border-radius: 5px;
+    color: #ff5500;
+    font-weight: bold;
+    box-shadow: 2px 2px 1px 1px #ffffff;
+    font-size: 12px;
+}
+/* liste ou details*/
+.item table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.item tr {
+    border-bottom: 1px solid #ffffff; 
+    /* Ajout d'une bordure inférieure entre les détails */
+}
+
+.item td {
     font-size: 10px;
-    margin: 5px 0;
+    padding: 5px;
+}
+
+/* Coloration de la partie des détails en bas de l'image */
+.item table {
+    background-color:#f4f4f4; /* Couleur de fond */
+    border-radius: 2%;
+}
+
+/* Ajustement de l'espace entre les détails */
+.item td h3 {
+    margin-right: 5px;
+    margin-bottom: 2px; /* Réduction de l'espace entre le titre et le texte */
+    text-align: left;
+}
+
+.item td p {
+    margin-right: 5px;
+    margin-bottom: 2px; /* Réduction de l'espace entre le titre et le texte */
+    text-align: right;
+    color: #ff5500;
+}
+/*Formulaire*/
+/* Styles pour le formulaire de recherche */
+/* Ajustement de l'espace entre les détails */
+
+.filter-form {
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 10px;
+    background-color: #f4f4f4;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+
+.filter-form label {
+    flex: 0 0 calc(25% - 10px); /* Ajustez la valeur ici pour définir la largeur des labels */
+    margin-bottom: 10px;
+}
+
+.filter-form input {
+    flex: 0 0 calc(48% - 10px); /* Ajustez la valeur ici pour définir la largeur des champs */
+    padding: 12px; /* Ajustez la valeur ici pour définir la hauteur des champs */
+    margin:15px;
+    width: 25%;
+    border: none;
+    border-radius: 7px;
+    font-family: cursive;
+
+}
+
+.filter-form button {
+    flex: 1 0 100%;
+    padding: 12px;
+    background-color: #ff5500;
+    color: #fff;
+    margin-left: 20px;
+    border: none;
+    border-radius: 3px;
+    font-family: cursive;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.filter-form button:hover {
+    background-color: #ff5500;
+}
+
+#itemNumber{
+    color: #ff5500;
+    font-size: 16px;
+    text-align: left;
 }

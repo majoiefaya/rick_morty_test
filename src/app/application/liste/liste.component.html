@@ -1,48 +1,99 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
-<body>
-    <form [formGroup]="filterForm" (ngSubmit)="applyFilters()">
-        <label for="name">Name:</label>
-        <input type="text" id="name" formControlName="name" />
-    
-        <label for="status">Status:</label>
-        <input type="text" id="status" formControlName="status" />
-        
-        <label for="name">Species:</label>
-        <input type="text" id="species" formControlName="species" />
-    
-        <label for="status">Type:</label>
-        <input type="text" id="type" formControlName="type" />
 
-        <label for="status">Gender:</label>
-        <input type="text" id="gender" formControlName="gender" />
-    
-        <button type="submit">Apply Filters</button>
-      </form>
-    <div class="grid-container">
-        <div *ngFor="let caracter of characters_datas" class="item">
-            <img [src]="caracter.image" alt="Rachel Image">
-            <ul>
-                <li>Status: {{caracter.status}}</li>
-                <li>Species: {{caracter.species}}</li>
-                <li>Gender: {{caracter.gender}}</li>
-                <li>Origin: {{caracter.origin.name}}</li>
-                <li>Last Location: {{caracter.location.name}}</li>
-            </ul>
+<body>
+    <div class="app-main">
+        <form [formGroup]="filterForm" (ngSubmit)="applyFilters()" class="filter-form">
+            <div class="form-group">
+                <input class="form-control" type="text" id="name" formControlName="name" placeholder="Name">
+                <input type="text" id="status" formControlName="status" placeholder="status">
+                <input type="text" id="species" formControlName="species" placeholder="species">
+            </div>
+
+            <div class="form-group">
+                <input type="text" id="gender" placeholder="gender" formControlName="gender">
+                <input type="text" id="type" placeholder="type" formControlName="type">
+
+                <button type="submit">Apply Filters</button>
+                <p id="itemNumber">{{getCharactersSize()}} items</p>
+            </div>
+
+        </form>
+        <div class="grid-container">
+            <div *ngFor="let caracter of characters_datas" class="item">
+                <div class="circle-badge">{{caracter.id}}</div>
+                <div class="created-badge">{{caracter.created|date:'dd-mm-yy'}}</div>
+                <div class="overlay">
+                    <p>{{caracter.name}}</p>
+                </div>
+                <img [src]="caracter.image" alt="Rachel Image" class="gridImg">
+                <!-- Inside the .item class -->
+                <table>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <h3><i class="fas fa-check-circle"></i> Status:</h3>
+                            </td>
+                            <td>
+                                <p>{{caracter.status}}</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <h3><i class="fas fa-leaf"></i> Species:</h3>
+                            </td>
+                            <td>
+                                <p>{{caracter.species}}</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <h3><i class="fas fa-venus-mars"></i> Gender:</h3>
+                            </td>
+                            <td>
+                                <p>{{caracter.gender}}</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <h3><i class="fas fa-globe"></i> Origin:</h3>
+                            </td>
+                            <td>
+                                <p>{{caracter.origin.name}}</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <h3><i class="fas fa-map-marker-alt"></i> Last Location:</h3>
+                            </td>
+                            <td>
+                                <p>{{caracter.location.name}}</p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+
+            </div>
         </div>
-      </div>
-      <div>
-        <a (click)="previousPage()">Page précédente</a>
-      
-        <a  *ngFor="let page of [].constructor(totalPages); let i = index" (click)="goToPage(i + 1)"  [class.active]="currentPage === i + 1">
-            {{ i + 1 }}
-        </a>  
-        <a (click)="nextPage()" >Page suivante</a>
+        <div class="pagination-container">
+            <a (click)="previousPage()" class="pagination-link">
+                < </a>
+                    <a [class.active]="currentPage" (click)="goToPage(currentPage)" class="pagination-link">
+                        {{currentPage}}
+                    </a>
+                    <a (click)="nextPage()" class="pagination-link">
+                        >
+                    </a>
+        </div>
     </div>
+
 </body>
+
 </html>

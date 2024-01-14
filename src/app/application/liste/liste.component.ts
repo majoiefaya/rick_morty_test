@@ -122,4 +122,8 @@ export class ListeComponent implements OnInit {
   private getPageNumberFromUrl(url: string): number {
     return Number(url.split('=')[1]);
   }
+
+  getCharactersSize(): number {
+    return this.characters_datas.length;
+  }
 }
