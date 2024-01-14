@@ -53,7 +53,6 @@ export class ListeComponent implements OnInit {
 
     this.appService.getAllCharacters(page).subscribe(
       (response: any) => {
-        console.log(response);
         if (response.results.length === 0) {
           this.errorMessage = "No datas to display"
         }
