@@ -10,7 +10,7 @@
   <img src="https://img.shields.io/badge/Status-Terminé-brightgreen?style=flat-square" alt="Statut"/>
 </p>
 
----
+<h3 align="center">• • •</h3>
 
 ## Fonctionnalités
 
@@ -20,7 +20,7 @@
 - Cartes visuelles avec image, nom, statut et localisation
 - Appels API en temps réel (Rick & Morty API REST)
 
----
+<h3 align="center">• • •</h3>
 
 ## Stack technique
 
@@ -32,7 +32,7 @@
 | CSS Framework  | SCSS custom / Angular styles     |
 | Déploiement    | GitHub Pages (ou local via CLI)  |
 
----
+<h3 align="center">• • •</h3>
 
 ## Installation locale
 
@@ -50,7 +50,7 @@ ng serve --open
 
 > Le projet est accessible via `http://localhost:4200`
 
----
+<h3 align="center">• • •</h3>
 
 ## Captures d’écran
 
@@ -73,14 +73,14 @@ ng serve --open
   </table>
 </p>
 
----
+<h3 align="center">• • •</h3>
 
 ## 📄 Licence
 
 Ce projet a été réalisé à titre d'exploration technique de l'API Rick & Morty.  
 © 2025 Faya Lidao Majoie
 
----
+<h3 align="center">• • •</h3>
 
 ## ☕ Me soutenir
 
